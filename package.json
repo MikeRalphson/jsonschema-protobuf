@@ -14,10 +14,12 @@
     "url": "https://github.com/ArthurvdKnaap/jsonschema-protobuf.git"
   },
   "author": "Arthur van der Knaap, Karissa McKelvey <karissa@karissamck.com> (http://karissamck.com/)",
-  "license": "BSD",
+  "license": "BSD-2-Clause",
   "dependencies": {
+    "json-schema-deref": "0.5.0",
     "protocol-buffers-schema": "3.3.2",
+    "reftools": "^1.1.8",
     "tape": "4.2.0",
-    "json-schema-deref": "0.5.0"
+    "yaml": "^1.10.0"
   }
 }
