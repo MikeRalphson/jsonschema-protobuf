@@ -101,7 +101,7 @@ function Field(field, tag, message) {
 
   if (field.type === 'array') {
     repeated = true
-    if (field.items.type === 'object') {
+    if (field.items && field.items.type === 'object') {
       if (field.items.$ref) { // follow $refs
         field.items = jptr(base,field.items.$ref)
       }
@@ -109,7 +109,7 @@ function Field(field, tag, message) {
       protoBufRoot.messages.push(Message(field.items,field.name))
       type = field.name
     } else {
-      type = field.items.type
+      type = (field.items ? field.items.type : 'object');
     }    
   } else if (field.type === 'string' && field.enum){
     type = field.name + "Enum";
@@ -118,7 +118,7 @@ function Field(field, tag, message) {
 
   //console.assert(typeof field.name !== 'undefined');
   return {
-    name: field.name,
+    name: field.name || 'field'+tag,
     type: type,
     tag: tag,
     repeated: repeated
